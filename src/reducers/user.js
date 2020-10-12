@@ -12,7 +12,7 @@ export const getBattle = () => ({ type: GET_BATTLE });
 
 const initialState = {
     user:{},
-    battle:{},
+    battle:[],
 };
 
 const user = (state = initialState, action) => {

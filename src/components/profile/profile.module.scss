@@ -1,0 +1,11 @@
+.profile-wrap {
+  display: flex;
+  align-items: center;
+  height: 150px;
+  border-bottom: 1px solid red;
+
+  .profile-icon {
+    border: 1px solid red;
+    width: 20%;
+  }
+}

@@ -3,17 +3,20 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Header } from './components/header';
 import { Home } from './components/home';
+import StatusProvider from './context/statusProvider.component';
 
 function App() {
   return (
-      <Router>
-          <Header />
-          <Switch>
-              <Route expect path="/" component={Home}/>
-              <Route path="/Sign In" component={Home}/>
-              <Route path="/Sign Up" component={Home}/>
-          </Switch>
-      </Router>
+      <StatusProvider>
+          <Router>
+              <Header />
+              <Switch>
+                  <Route expect path="/" component={Home}/>
+                  <Route path="/Sign In" component={Home}/>
+                  <Route path="/Sign Up" component={Home}/>
+              </Switch>
+          </Router>
+      </StatusProvider>
   );
 }
 

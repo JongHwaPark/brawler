@@ -1,10 +1,10 @@
 .home-wrap {
   border-bottom: 1px solid #ccc;
+}
 
-  & > div {
-    max-width: 1024px;
-    margin: 0 auto;
-  }
+.center-wrap {
+  max-width: 1024px;
+  margin: 0 auto;
 }
 
 .profile-wrap {
@@ -16,5 +16,19 @@
   .profile-icon {
     border: 1px solid red;
     width: 20%;
+  }
+}
+
+.content-wrap {
+  display: flex;
+  justify-content: space-between;
+
+  .recent-log-wrap {
+    width: 20%;
+    border: 1px solid #ccc;
+  }
+  .battle-log-wrap {
+    width: 75%;
+    border: 1px solid #ccc;
   }
 }

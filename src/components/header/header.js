@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames/bind';
@@ -9,10 +9,12 @@ import {
     Button,
 } from 'semantic-ui-react';
 import {setUser, setBattle} from "../../reducers/user";
+import StatusContext from '../../context/status.context';
 const cx = classNames.bind(styles);
 
 function Header() {
     const dispatch = useDispatch();
+    const { setLoaded } = useContext(StatusContext);
     const [tagData, setTag] = useState('2LYRJQYGJ');
 
     const getUserData = () => {
@@ -34,13 +36,14 @@ function Header() {
     const handleClickSearchBtn = async (data) => {
         try {
             const data = await axios.all([getUserData(), getBattleLog()]);
-            console.log(data);
             dispatch(setUser(data[0].data));
             dispatch(setBattle(data[1].data));
+            setLoaded(true);
         } catch (err){
             console.log(err);
         }
     };
+
 
     return (
         <header className={cx('header-wrap')}>
