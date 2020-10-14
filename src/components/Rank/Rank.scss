@@ -1,0 +1,21 @@
+.rank-wrap{
+  width: 100%;
+  position: relative;
+  text-align: center;
+  & > div{
+    position: absolute;
+    top: 0;
+    color: white;
+    left: 5px;
+    transform: rotate(-9deg);
+    .title{
+      font-size: 0.8em;
+      text-shadow: 1px 1px 1px white;
+      color: black;
+    }
+    .content {
+      font-size: 0.5em;
+      margin-top: -5px;
+    }
+  }
+}

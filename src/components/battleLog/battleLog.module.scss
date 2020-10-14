@@ -38,8 +38,9 @@
 
   .brawl-info-wrap{
     width: 50%;
+    font-family: 'lilita_oneregular', sans-serif;
 
-    .brawl-info{
+    .brawl-profile{
       display: flex;
 
       .image-wrap{
@@ -50,28 +51,39 @@
           position: absolute;
           display: flex;
           z-index:1;
-
-          .rank-wrap{
-            width: 25%;
-            position: relative;
-            & > div{
-              position: absolute;
-              top: 10px;
-              color: white;
-            }
-          }
+          top: 0;
+          right: 0;
+          color:white;
+          width: 35px;
         }
 
         .bottom {
           position: absolute;
           display: flex;
           z-index:1;
+          right: 0;
           bottom: 0;
           background-color: black;
-          color: white;
+          padding: 0 6px;
+          color: #969696;
+          font-size: 0.5em;
+
+          strong {
+            padding-left:3px;
+            color: white;
+            font-size: 2em;
+          }
         }
       }
-
     }
+
+    .brawl-trp{
+      display: flex;
+      .image-wrap{
+        width: 25px;
+
+      }
+    }
+
   }
 }

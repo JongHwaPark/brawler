@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Grid, Image } from 'semantic-ui-react';
 import classNames from 'classnames/bind';
 import styles from './battleLog.module.scss';
+import { Rank } from '../Rank';
 import StatusContext from '../../context/status.context';
 const cx = classNames.bind(styles);
 
@@ -23,6 +24,8 @@ function BattleLog(props) {
             case"heist":
             case"brawlBall":
             case'duoShowdown':
+            case'siege':
+            case'gemGrab':
                 for(const teamData of battleData.teams){
                     for(const player of teamData){
                         if(player.tag === user.tag){
@@ -77,23 +80,14 @@ function BattleLog(props) {
                                 </ul>
                             </li>
                             <li className={cx('brawl-info-wrap')}>
-                                <div className={cx('brawl-info')}>
+                                <div className={cx('brawl-profile')}>
                                     <div className={cx('image-wrap')}>
                                         <div className={cx('top')}>
-                                            <div className={cx('rank-wrap')}>
-                                                <Image src={require(`../../static/UI/icon_rank_1.png`)} />
-                                                <div>
-                                                    <span>Rank</span>
-                                                    <span>14</span>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <Image src={require(`../../static/UI/icon_trophy_medium.png`)} />
-                                                285
-                                            </div>
+                                            <Rank rank={14}/>
                                         </div>
                                         <div className={cx('bottom')}>
-                                            POWER <strong>7</strong>
+                                            <span>POWER</span>
+                                            <strong>7</strong>
                                         </div>
                                         {brawlInfo?.name && (
                                             <Image src={require(`../../static/BrawlerPortraits/${getImageName(brawlInfo?.name)}.png`)} />
@@ -104,7 +98,19 @@ function BattleLog(props) {
                                         <div>스타파월</div>
                                     </div>
                                 </div>
-                                <div>{brawlInfo?.name}</div>
+                                <div className={cx('brawl-info')}>
+                                    <div className={cx('brawl-name')}>
+                                        {brawlInfo?.name}
+                                    </div>
+                                    <div className={cx('brawl-trp')}>
+                                        <div className={cx('image-wrap')}>
+                                            <Image src={require(`../../static/UI/icon_trophy_medium.png`)} />
+                                        </div>
+                                        <div>
+                                            285
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             <li>
                                 <div>브롤러들</div>
