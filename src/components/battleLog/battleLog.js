@@ -26,6 +26,7 @@ function BattleLog(props) {
             case'duoShowdown':
             case'siege':
             case'gemGrab':
+            case'bounty':
                 for(const teamData of battleData.teams){
                     for(const player of teamData){
                         if(player.tag === user.tag){

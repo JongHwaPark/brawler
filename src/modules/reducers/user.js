@@ -25,6 +25,7 @@ const user = (state = initialState, action) => {
         case GET_USER:
             return state.user;
         case SET_BATTLE:
+            console.log(action);
             return {
                 ...state,
                 battle:action.payload.items,

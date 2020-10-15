@@ -1,5 +1,4 @@
-import React, {useState, useContext} from 'react'
-import axios from 'axios';
+import React, {useState, useContext, useReducer} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames/bind';
 import styles from './header.module.scss';
@@ -8,7 +7,7 @@ import {
     Label,
     Button,
 } from 'semantic-ui-react';
-import {setUser, setBattle} from "../../reducers/user";
+import {setUser, setBattle} from "../../modules/reducers/user";
 import StatusContext from '../../context/status.context';
 const cx = classNames.bind(styles);
 
@@ -17,28 +16,12 @@ function Header() {
     const { setLoaded } = useContext(StatusContext);
     const [tagData, setTag] = useState('2LYRJQYGJ');
 
-    const getUserData = () => {
-        try{
-            return axios.get(`http://127.0.0.1:8000/player/%23${tagData}`);
-        } catch (err){
-            throw err;
-        }
-    };
-
-    const getBattleLog = () => {
-        try{
-            return axios.get(`http://127.0.0.1:8000/battle/%23${tagData}`);
-        } catch (err){
-            throw err;
-        }
-    };
-
     const handleClickSearchBtn = async (data) => {
         try {
-            const data = await axios.all([getUserData(), getBattleLog()]);
-            dispatch(setUser(data[0].data));
-            dispatch(setBattle(data[1].data));
+            dispatch(setUser(tagData));
+            dispatch(setBattle(tagData));
             setLoaded(true);
+
         } catch (err){
             console.log(err);
         }

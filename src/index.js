@@ -1,16 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import {applyMiddleware, createStore} from 'redux';
 import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import './index.css';
 import 'semantic-ui-css/semantic.min.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import rootReducer from './reducers';
+import rootReducer from './modules/reducers';
+import rootSaga from './modules/sagas';
+import createSagaMiddleware from 'redux-saga';
 
+
+const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+    composeWithDevTools(applyMiddleware(sagaMiddleware)));
+
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <React.StrictMode>
