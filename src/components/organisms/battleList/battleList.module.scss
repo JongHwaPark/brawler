@@ -1,0 +1,227 @@
+.list-wrap{
+  display: flex;
+  list-style: none;
+  margin: 0 0 10px 0;
+  padding: 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+
+  &.victory{
+    border-left: 5px solid #00b3ff;
+    background-color: aliceblue;
+  }
+
+  &.lose{
+    border-left: 5px solid firebrick;
+    background-color: #f5f0f0;
+  }
+
+  .game-mode {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .sec1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 0;
+      .image-wrap {
+        width: 30%;
+        padding: 0 3px;
+        img {
+          width: 100%;
+        }
+      }
+      .mode {
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+      .title {
+        font-size: .7em;
+      }
+    }
+  }
+
+  .brawl-info-wrap{
+    display: flex;
+    align-items: center;
+    width: 30%;
+    font-family: 'lilita_oneregular', sans-serif;
+
+    .brawl-profile{
+      .image-wrap{
+        position: relative;
+        max-width: 100px;
+        .top {
+          position: absolute;
+          display: flex;
+          z-index:1;
+          top: 0;
+          right: 0;
+          color:white;
+          width: 35px;
+        }
+
+        .bottom {
+          position: absolute;
+          display: flex;
+          z-index:1;
+          right: 0;
+          bottom: 0;
+          background-color: black;
+          padding: 0 6px;
+          color: #969696;
+          font-size: 0.5em;
+
+          strong {
+            padding-left:3px;
+            color: white;
+            font-size: 2em;
+          }
+        }
+      }
+      .brawl-name {
+        text-align: center;
+      }
+    }
+
+    .brawl-info{
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      align-items: center;
+      justify-content: space-around;
+
+      .content {
+        display: flex;
+      }
+
+      .brawl-trp{
+        display: flex;
+        .image-wrap{
+          width: 25px;
+        }
+      }
+    }
+
+  }
+
+  .brawler-list-wrap{
+    flex: 1;
+    font-family: 'lilita_oneregular', sans-serif;
+
+    .brawler-list{
+      padding: 0;
+
+      li{
+        width: 70px;
+        height: 65px;
+        list-style: none;
+        display: inline-block;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .image-wrap{
+        position: relative;
+        border: 2px solid black;
+        width: 80%;
+        height: 80%;
+        .top {
+          background-color: black;
+          color: yellow;
+          top: 0;
+          position: absolute;
+          display: flex;
+          align-items: center;
+
+          z-index: 1;
+          font-size: 0.5em;
+
+          line-height: normal;
+          div {
+            width: 10px;
+            img {
+              width: 100%;
+            }
+          }
+        }
+
+        .bottom {
+          position: absolute;
+          display: flex;
+          z-index:1;
+          right: 0;
+          bottom: 0;
+          background-color: black;
+          padding: 0 6px;
+          color: #969696;
+          font-size: 0.3em;
+          line-height: normal;
+
+          strong {
+            padding-left:3px;
+            color: white;
+            font-size: 2em;
+          }
+        }
+      }
+
+      .name{
+        letter-spacing: normal;
+        font-size: .8em;
+      }
+
+    }
+  }
+}
+
+
+.star-power {
+  width: 30px;
+  height: 30px;
+  background: url("../../../static/Brawler/StarPowers/template.png");
+  background-size: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #660138;
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+
+    img {
+      width: 70%;
+    }
+  }
+}
+
+.gadgets {
+  width: 30px;
+  height: 30px;
+  background: url("../../../static/Brawler/Gadgets/template.png");
+  background-size: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #004400;
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    border: 1px solid #01d301;
+
+    img {
+      width: 70%;
+    }
+  }
+}

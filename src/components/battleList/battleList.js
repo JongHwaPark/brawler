@@ -1,0 +1,140 @@
+import React, { useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Grid, Image } from 'semantic-ui-react';
+import classNames from 'classnames/bind';
+import styles from './battleLog.module.scss';
+import { Rank } from '../Rank';
+import StatusContext from '../../context/status.context';
+const cx = classNames.bind(styles);
+
+function BattleLog(props) {
+    const { isLoaded } = useContext(StatusContext);
+    const user = useSelector((store) => store.user.user);
+    const battleLog = useSelector((store) => store.user.battle);
+
+    const getImageName = (str) => {
+        if(str) {
+            return str.split(' ').join('').toUpperCase();
+        }
+    };
+
+    const getBrawlerInBattleLog = (battleData) => {
+        let rtnVal;
+        switch(battleData.mode){
+            case"heist":
+            case"brawlBall":
+            case'duoShowdown':
+            case'siege':
+            case'gemGrab':
+            case'bounty':
+                for(const teamData of battleData.teams){
+                    for(const player of teamData){
+                        if(player.tag === user.tag){
+                            rtnVal = player.brawler;
+                            break;
+                        }
+                    }
+                }
+                break;
+            case"bigGame":
+            case"soloShowdown":
+                for(const player of battleData.players){
+                    if(player.tag === user.tag){
+                        rtnVal = player.brawler;
+                        break;
+                    }
+                }
+                if(!rtnVal && battleData.hasOwnProperty('bigBrawler')){
+                    rtnVal = battleData.bigBrawler.brawler;
+                }
+                break;
+            default:
+                console.log('디폴트다',battleData.mode);
+                rtnVal = 'asd';
+                break;
+        }
+        return rtnVal;
+    };
+
+    const getBrawlerById = (id) => {
+        return user.brawlers.find((brawler) => brawler.id === id);
+    };
+
+    return (
+        <>
+            {isLoaded && battleLog && (
+                    battleLog.map((data, i) => {
+                    const victory = data.battle.result === 'victory';
+                    const brawlInfo = getBrawlerInBattleLog(data.battle);
+                    const brawler = getBrawlerById(brawlInfo.id);
+                    const gadgets = brawler.gadgets;
+                    const starPowers = brawler.starPowers;
+                    return (
+                        <ul className={cx('list-wrap', victory ? 'victory' : 'lose')}>
+                            <li className={cx('game-mode')}>
+                                <div className={cx('sec1')}>
+                                    <Image src={require(`../../static/GameModes/mode-icons/${data.event.mode}.png`)} />
+                                    <div>
+                                        <div className={cx('mode')}>{data.event.mode}</div>
+                                        <div className={cx('title')}>{data.event.map}</div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <ul>
+                                    <li>{data.battle.type}</li>
+                                    <li>{data.battle.result}</li>
+                                    <li>{data.battle.trophyChange}</li>
+                                    <li>{data.battle.duration}</li>
+                                </ul>
+                            </li>
+                            <li className={cx('brawl-info-wrap')}>
+                                <div className={cx('brawl-profile')}>
+                                    <div className={cx('image-wrap')}>
+                                        <div className={cx('top')}>
+                                            <Rank rank={14}/>
+                                        </div>
+                                        <div className={cx('bottom')}>
+                                            <span>POWER</span>
+                                            <strong>7</strong>
+                                        </div>
+                                        {brawlInfo?.name && (
+                                            <Image src={require(`../../static/BrawlerPortraits/${getImageName(brawlInfo?.name)}.png`)} />
+                                        )}
+                                    </div>
+                                    <div>
+                                        <div>가젯 {gadgets}</div>
+                                        <div>스타파월 {starPowers}</div>
+                                    </div>
+                                </div>
+                                <div className={cx('brawl-info')}>
+                                    <div className={cx('brawl-name')}>
+                                        {brawlInfo?.name}
+                                    </div>
+                                    <div className={cx('brawl-trp')}>
+                                        <div className={cx('image-wrap')}>
+                                            <Image src={require(`../../static/UI/icon_trophy_medium.png`)} />
+                                        </div>
+                                        <div>
+                                            285
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>브롤러들</div>
+                            </li>
+                        </ul>
+                    )
+                })
+                )
+            }
+
+            {!isLoaded && (
+                    <div>Loading...</div>
+                )
+            }
+        </>
+    );
+}
+
+export default BattleLog;

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Header } from './components/header';
-import { Home } from './components/home';
+import { Header } from './components/organisms/header';
+import { Home } from './components/pages/home';
 import StatusProvider from './context/statusProvider.component';
 
 function App() {
