@@ -1,20 +1,15 @@
 import React, { useContext } from 'react';
 import {Image} from "semantic-ui-react";
-
 import classNames from "classnames/bind";
 import styles from "../components/organisms/battleList/battleList.module.scss";
 import {SoloShowDown} from "../components/molecules/battleList/soloShowDown";
-
+import {TwoTeam} from "../components/molecules/battleList/twoTeam";
+import {getBrawlImageName} from '../common/utills';
+import {useSelector} from "react-redux";
 const cx = classNames.bind(styles);
 
-const getImageName = (str) => {
-    if(str) {
-        return str.split(' ').join('').toUpperCase();
-    }
-};
-
-
 function BattlePlayerListContainer(props) {
+    const user = useSelector((store) => store.user.user);
 
     const getComponents = () => {
         let components;
@@ -22,6 +17,17 @@ function BattlePlayerListContainer(props) {
             case"soloShowdown":
                 components = <SoloShowDown
                     battle={props.battle}
+                    active={user.name}
+                />;
+                break;
+            case"gemGrab":
+            case"brawlBall":
+            case"bounty":
+            case"hotZone":
+            case"heist":
+                components = <TwoTeam
+                    battle={props.battle}
+                    active={user.name}
                 />;
                 break;
             case"roboRumble":
@@ -39,7 +45,7 @@ function BattlePlayerListContainer(props) {
                                     <span>Lv</span>
                                     <strong>{data.brawler.power}</strong>
                                 </div>
-                                <Image src={require(`../static/Brawler/Portraits/${getImageName(data.brawler.name)}.png`)} />
+                                <Image src={require(`../static/Brawler/Portraits/${getBrawlImageName(data.brawler.name)}.png`)} />
                             </div>
                             <div className={cx('name')}>{data.name}</div>
                         </li>
@@ -60,7 +66,7 @@ function BattlePlayerListContainer(props) {
                                 <span>Lv</span>
                                 <strong>7</strong>
                             </div>
-                            <Image src={require(`../static/Brawler/Portraits/ELPRIMO.png`)} />
+                            <Image src={require(`../static/Brawler/Portraits/el-primo.png`)} />
                         </div>
                         <div className={cx('name')}>너구리개구리다</div>
                     </li>

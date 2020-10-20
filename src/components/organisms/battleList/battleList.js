@@ -4,14 +4,12 @@ import classNames from 'classnames/bind';
 import styles from './battleList.module.scss';
 import  { Rank }  from '../../atoms/rank';
 import BattlePlayerListContainer from "../../../container/battlePlayerListContainer";
+import { getBrawlImageName } from '../../../common/utills';
+import {Portraits} from "../../atoms/portraits";
 const cx = classNames.bind(styles);
 
+
 function BattleList(props) {
-    const getImageName = (str) => {
-        if(str) {
-            return str.split(' ').join('-').toLowerCase();
-        }
-    };
 
     return (
         <>
@@ -42,7 +40,7 @@ function BattleList(props) {
                                 <strong>{props.power}</strong>
                             </div>
                             {props.brawler?.name && (
-                                <Image src={require(`../../../static/Brawler/Portraits/${getImageName(props.brawlImage)}.png`)} />
+                                <Portraits name={getBrawlImageName(props.brawlImage)}/>
                             )}
                         </div>
                         <div className={cx('brawl-name')}>
@@ -56,7 +54,7 @@ function BattleList(props) {
                                     return (
                                         <div className={cx('star-power')}>
                                             <div className={cx('circle')}>
-                                                <Image src={require(`../../../static/Brawler/StarPowers/${getImageName(data.name)}.png`)} />
+                                                <Image src={require(`../../../static/Brawler/StarPowers/${getBrawlImageName(data.name)}.png`)} />
                                             </div>
                                         </div>
                                     );
@@ -69,7 +67,7 @@ function BattleList(props) {
                                     return (
                                         <div className={cx('gadgets')}>
                                             <div className={cx('circle')}>
-                                                <Image src={require(`../../../static/Brawler/Gadgets/${getImageName(data.name)}.png`)} />
+                                                <Image src={require(`../../../static/Brawler/Gadgets/${getBrawlImageName(data.name)}.png`)} />
                                             </div>
                                         </div>
                                     );
@@ -87,11 +85,11 @@ function BattleList(props) {
                     </div>
                 </li>
                 <li className={cx('brawler-list-wrap')}>
-                    <ul className={cx('brawler-list','solo-showdown')}>
+                    <div className={cx('brawler-list','solo-showdown')}>
                         <BattlePlayerListContainer
                             battle={props.battle}
                         />
-                    </ul>
+                    </div>
                 </li>
             </ul>
         </>

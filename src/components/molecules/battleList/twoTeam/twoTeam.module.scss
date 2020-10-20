@@ -1,0 +1,21 @@
+.gemgrab-wrap{
+  display: flex;
+  justify-content: center;
+
+  .team-wrap{
+    text-align: center;
+  }
+
+  .name {
+    font-size: 0.3em;
+    font-weight: bold;
+    line-height: normal;
+    text-align: center;
+    word-break: keep-all;
+  }
+
+  .versus{
+    display: flex;
+    align-items: center;
+  }
+}

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import StatusContext from "../context/status.context";
 import { BattleList } from "../components/organisms/battleList";
+import {getBrawlImageName} from '../common/utills';
 
 function BattleListContainer(props) {
     const { isLoaded } = useContext(StatusContext);
@@ -17,6 +18,7 @@ function BattleListContainer(props) {
             case'siege':
             case'gemGrab':
             case'bounty':
+            case'hotZone':
                 for(const teamData of battleData.teams){
                     for(const player of teamData){
                         if(player.tag === user.tag){
@@ -51,12 +53,6 @@ function BattleListContainer(props) {
         return user.brawlers.find((brawler) => brawler.id === id);
     };
 
-    const getImageName = (str) => {
-        if(str) {
-            return str.split(' ').join('-').toLowerCase();
-        }
-    };
-
     const getVictory = (data) => {
         switch(data.mode){
             case'soloShowdown':
@@ -89,7 +85,7 @@ function BattleListContainer(props) {
                             trophies={brawler.trophies}
                             rank={brawler.rank}
                             power={brawler.power}
-                            brawlImage={getImageName(brawlInfo?.name)}
+                            brawlImage={getBrawlImageName(brawlInfo?.name)}
                         />
                     )
                 })
