@@ -6,8 +6,15 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+
 }
 
+.star-player{
+  .name {
+    background-color: orange;
+    color: white;
+  }
+}
 
 .image-wrap{
   position: relative;
@@ -15,8 +22,9 @@
   width: 80%;
   height: 80%;
   margin: 0 auto;
-  opacity: .65;
+  opacity: .7;
   &.active{
+    border: 3px solid #ffa500;
     opacity: 1;
   }
 

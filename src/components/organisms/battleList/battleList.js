@@ -8,12 +8,11 @@ import { getBrawlImageName } from '../../../common/utills';
 import {Portraits} from "../../atoms/portraits";
 const cx = classNames.bind(styles);
 
-
 function BattleList(props) {
 
     return (
         <>
-            <ul className={cx('list-wrap', props.victory ? 'victory' : 'lose')}>
+            <ul className={cx('list-wrap', props.victory ? 'victory' : 'defeat')}>
                 <li className={cx('game-mode')}>
                     <div className={cx('sec1')}>
                         <div className={cx('image-wrap')}>
@@ -24,9 +23,14 @@ function BattleList(props) {
                             <div className={cx('title')}>{props.map}</div>
                         </div>
                     </div>
-                    <ul>
-                        <li>{props.battle.trophyChange}</li>
-                        <li>Rank {props.battle.rank}</li>
+                    <ul className={cx('sec2')}>
+                        { props.battle.rank && (
+                            <li className={cx('rank', props.victory ? 'victory' : 'lose')}>
+                                <strong>{props.battle.rank}</strong> / {props.mode === 'soloShowdown' ? '10' : '5'}
+                            </li>
+                        ) }
+                        { props.battle.trophyChange && (<li>{props.battle.trophyChange} ({ props.brawler.trophies + props.battle.trophyChange})</li>)}
+                        <li>{props.battle.type}</li>
                     </ul>
                 </li>
                 <li className={cx('brawl-info-wrap')}>
@@ -50,9 +54,9 @@ function BattleList(props) {
                     <div className={cx('brawl-info')}>
                         <div className={cx('content')}>
                             {
-                                props.starPowers.map((data)=>{
+                                props.starPowers.map((data, i)=>{
                                     return (
-                                        <div className={cx('star-power')}>
+                                        <div key={i} className={cx('star-power')}>
                                             <div className={cx('circle')}>
                                                 <Image src={require(`../../../static/Brawler/StarPowers/${getBrawlImageName(data.name)}.png`)} />
                                             </div>
@@ -63,9 +67,9 @@ function BattleList(props) {
                         </div>
                         <div className={cx('content')}>
                             {
-                                props.gadgets.map((data)=>{
+                                props.gadgets.map((data, i)=>{
                                     return (
-                                        <div className={cx('gadgets')}>
+                                        <div key={i} className={cx('gadgets')}>
                                             <div className={cx('circle')}>
                                                 <Image src={require(`../../../static/Brawler/Gadgets/${getBrawlImageName(data.name)}.png`)} />
                                             </div>
@@ -87,6 +91,7 @@ function BattleList(props) {
                 <li className={cx('brawler-list-wrap')}>
                     <div className={cx('brawler-list','solo-showdown')}>
                         <BattlePlayerListContainer
+                            user={props.user}
                             battle={props.battle}
                         />
                     </div>
@@ -96,4 +101,7 @@ function BattleList(props) {
     );
 }
 
-export default BattleList;
+const propsAreEqual = (prevProps, nextProps) => {
+    return nextProps.battle === prevProps.battle;
+};
+export default React.memo(BattleList, propsAreEqual);

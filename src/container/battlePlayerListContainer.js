@@ -3,13 +3,31 @@ import {Image} from "semantic-ui-react";
 import classNames from "classnames/bind";
 import styles from "../components/organisms/battleList/battleList.module.scss";
 import {SoloShowDown} from "../components/molecules/battleList/soloShowDown";
+import {DuoShowDown} from "../components/molecules/battleList/duoShowDown";
+import {OneTeam} from "../components/molecules/battleList/oneTeam";
 import {TwoTeam} from "../components/molecules/battleList/twoTeam";
 import {getBrawlImageName} from '../common/utills';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setBattle, setUser} from "../modules/reducers/user";
+import StatusContext from "../context/status.context";
 const cx = classNames.bind(styles);
 
 function BattlePlayerListContainer(props) {
-    const user = useSelector((store) => store.user.user);
+    const dispatch = useDispatch();
+    const user = useSelector((store) => store.user.get('user'));
+    const { setLoaded } = useContext(StatusContext);
+
+    const handleClickBrawlIcon = (data) => {
+        try {
+            setLoaded(false);
+            dispatch(setUser(data));
+            dispatch(setBattle(data));
+            setLoaded(true);
+
+        } catch (err){
+            console.log(err);
+        }
+    };
 
     const getComponents = () => {
         let components;
@@ -18,6 +36,14 @@ function BattlePlayerListContainer(props) {
                 components = <SoloShowDown
                     battle={props.battle}
                     active={user.name}
+                    onClickIcon={handleClickBrawlIcon}
+                />;
+                break;
+            case"duoShowdown":
+                components = <DuoShowDown
+                    battle={props.battle}
+                    active={user.name}
+                    onClickIcon={handleClickBrawlIcon}
                 />;
                 break;
             case"gemGrab":
@@ -25,15 +51,24 @@ function BattlePlayerListContainer(props) {
             case"bounty":
             case"hotZone":
             case"heist":
+            case"siege":
                 components = <TwoTeam
                     battle={props.battle}
                     active={user.name}
+                    onClickIcon={handleClickBrawlIcon}
+                />;
+                break;
+            case"bossFight":
+                components = <OneTeam
+                    battle={props.battle}
+                    active={user.name}
+                    onClickIcon={handleClickBrawlIcon}
                 />;
                 break;
             case"roboRumble":
                 components = props.battle.players.map((data, i) => {
                     return (
-                        <li>
+                        <li onClick={() => handleClickBrawlIcon(data.tag)}>
                             <div className={cx('image-wrap')}>
                                 <div className={cx('top')}>
                                     <div>

@@ -1,0 +1,11 @@
+.duo-showdown-wrap{
+  display: flex;
+
+  .team-wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 1px;
+    background-color: #00000021;
+  }
+}

@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, {useContext, useEffect, useState} from 'react';
+import { useSelector } from 'react-redux';
 import StatusContext from "../context/status.context";
 import { BattleList } from "../components/organisms/battleList";
 import {getBrawlImageName} from '../common/utills';
 
 function BattleListContainer(props) {
-    const { isLoaded } = useContext(StatusContext);
-    const user = useSelector((store) => store.user.user);
-    const battleLog = useSelector((store) => store.user.battle);
+    const loaded = useSelector((store) => store.user.get('loaded'));
+    const isLoaded = loaded.get('battle') && loaded.get('user');
+
+    const user = useSelector((store) => store.user.get('user'));
+    const battleLog = useSelector((store) => store.user.get('battle'));
 
     const getBrawlerInBattleLog = (battleData) => {
         let rtnVal;
@@ -31,6 +33,7 @@ function BattleListContainer(props) {
             case"bigGame":
             case"soloShowdown":
             case'roboRumble':
+            case'bossFight':
                 for(const player of battleData.players){
                     if(player.tag === user.tag){
                         rtnVal = player.brawler;
@@ -58,7 +61,17 @@ function BattleListContainer(props) {
             case'soloShowdown':
                 return data.rank <= 5;
             case'duoShowdown':
-                return data.rank <= 4;
+                return data.rank <= 3;
+            case'bossFight':
+            case'bounty':
+            case'brawlBall':
+            case'heist':
+            case'hotZone':
+            case'siege':
+            case'gemGrab':
+            case'bigGame':
+            case'roboRumble':
+                return data.result === 'victory';
             default:
                 return true;
 
@@ -70,6 +83,9 @@ function BattleListContainer(props) {
             {isLoaded && battleLog && (
                 battleLog.map((data, i) => {
                     const brawlInfo = getBrawlerInBattleLog(data.battle);
+                    if (!brawlInfo) {
+                        console.log('에에에엥');
+                    }
                     const brawler = getBrawlerById(brawlInfo.id);
                     const victory = getVictory(data.battle);
                     return (
@@ -85,7 +101,7 @@ function BattleListContainer(props) {
                             trophies={brawler.trophies}
                             rank={brawler.rank}
                             power={brawler.power}
-                            brawlImage={getBrawlImageName(brawlInfo?.name)}
+                            brawlImage={getBrawlImageName(brawlInfo.name)}
                         />
                     )
                 })

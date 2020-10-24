@@ -9,7 +9,7 @@ const cx = classNames.bind(styles);
 function BattleListIcon(props) {
 
     return (
-        <div className={cx('content-wrap')}>
+        <div className={cx('content-wrap', props.startPlayer && 'star-player')} onClick={ () => {props.onClickIcon(props.tag)}}>
             <div className={cx('image-wrap', props.active === props.name && 'active')}>
                 <div className={cx('top')}>
                     <div>

@@ -14,11 +14,14 @@ function SoloShowDown(props) {
         const brawler = data.brawler;
         return (
             <BattleListIcon
+                key={i}
+                tag={data.tag}
                 active={props.active}
                 trophies={brawler.trophies}
                 power={brawler.power}
                 imageName={getBrawlImageName(brawler.name)}
                 name={data.name}
+                onClickIcon={props.onClickIcon}
             />
         );
     });

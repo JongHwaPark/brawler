@@ -1,5 +1,5 @@
-import React, {useState, useContext, useReducer} from 'react'
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import classNames from 'classnames/bind';
 import styles from './header.module.scss';
 import {
@@ -8,19 +8,16 @@ import {
     Button,
 } from 'semantic-ui-react';
 import {setUser, setBattle} from "../../../modules/reducers/user";
-import StatusContext from '../../../context/status.context';
 const cx = classNames.bind(styles);
 
 function Header() {
     const dispatch = useDispatch();
-    const { setLoaded } = useContext(StatusContext);
     const [tagData, setTag] = useState('2LYRJQYGJ');
 
     const handleClickSearchBtn = async (data) => {
         try {
-            dispatch(setUser(tagData));
-            dispatch(setBattle(tagData));
-            setLoaded(true);
+            dispatch(setUser('#'+tagData));
+            dispatch(setBattle('#'+tagData));
 
         } catch (err){
             console.log(err);
@@ -40,9 +37,6 @@ function Header() {
                             <Button type='submit' onClick={()=>handleClickSearchBtn()}>Search</Button>
                         </Input>
                     </li>
-                    <li>Home</li>
-                    <li>Sign in</li>
-                    <li>Sign up</li>
                 </ul>
             </div>
         </header>
