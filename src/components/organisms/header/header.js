@@ -28,7 +28,7 @@ function Header() {
     return (
         <header className={cx('header-wrap')}>
             <div>
-                <a className={cx('logo')}>LOGO</a>
+                <a className={cx('logo')}>LOGO v2</a>
                 <ul className={cx('header-nav')}>
                     <li>
                         <Input labelPosition='right' action={{ icon: 'search' }} placeholder='Search...'>
