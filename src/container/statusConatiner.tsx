@@ -1,7 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import {useSelector} from "react-redux";
+import {RootState} from "../modules/reducers";
 
-function statusContainer(props) {
-    const user = props.userData;
+function StatusContainer() {
+    const user = useSelector((store:RootState) => store.user.get('user'));
 
     return (
         <>
@@ -23,4 +25,4 @@ function statusContainer(props) {
     );
 }
 
-export default statusContainer;
+export default StatusContainer;

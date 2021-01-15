@@ -4,7 +4,7 @@ import { Header } from './components/organisms/header';
 import { Home } from './components/pages/home';
 import StatusProvider from './context/statusProvider.component';
 
-function App() {
+const  App : React.FC = () => {
   return (
       <StatusProvider>
           <Router>
@@ -17,6 +17,6 @@ function App() {
           </Router>
       </StatusProvider>
   );
-}
+};
 
 export default App;

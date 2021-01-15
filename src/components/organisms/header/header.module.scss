@@ -1,5 +1,6 @@
 .header-wrap {
   border-bottom: 1px solid grey;
+  background-color: #00b3ff;
 
   & > div {
     max-width: 1024px;
@@ -12,7 +13,8 @@
   }
 
   .logo {
-    border: 1px solid red;
+    color: white;
+    font-size: 2rem;
   }
 
   .header-nav {

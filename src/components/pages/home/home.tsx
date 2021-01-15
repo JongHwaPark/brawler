@@ -1,24 +1,25 @@
-import React, { useContext } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React  from 'react';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 import styles from './home.module.scss';
 import BattleListContainer from '../../../container/battleListContainer';
 import StatusContainer from '../../../container/statusConatiner';
-import {Button, Tab} from "semantic-ui-react";
+import {Tab} from "semantic-ui-react";
+import {RootState} from "../../../modules/reducers";
+
 const cx = classNames.bind(styles);
 
 function Home() {
-    const user = useSelector((store) => store.user.get('user'));
-    const battleLog = useSelector((store) => store.user.get('battle'));
+    const user = useSelector((store:RootState) => store.user.get('user'));
 
     const panes = [
         {
             menuItem: 'Battle',
-            render: () => <BattleListContainer user={user} battle={battleLog}/>,
+            render: () => <BattleListContainer />,
         },
         {
             menuItem: 'Status',
-            render: () => <StatusContainer userData={user}/>,
+            render: () => <StatusContainer />,
         },
     ];
 

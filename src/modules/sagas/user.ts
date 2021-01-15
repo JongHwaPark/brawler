@@ -1,16 +1,17 @@
+import axios from "axios";
 import {all, call, put, takeEvery} from 'redux-saga/effects'
 import { SET_USER, SET_BATTLE, setUserSuccess, setBattleSuccess } from '../reducers/user';
-import axios from "axios";
+import {setUser, setBattle} from '../reducers/user'
 
-const getPlayer = (tagData) => {
+const getPlayer = (tagData:string) => {
     return axios.get(`http://127.0.0.1:8000/player/${encodeURIComponent(tagData)}`);
 };
 
-const getBattleLog = (tagData) => {
+const getBattleLog = (tagData:string) => {
     return axios.get(`http://127.0.0.1:8000/battle/${encodeURIComponent(tagData)}`);
 };
 
-function* fetchUser(action) {
+function* fetchUser(action:ReturnType<typeof setUser>) {
     try {
         const user = yield call(getPlayer, action.payload);
         yield put(setUserSuccess(user.data));
@@ -20,7 +21,7 @@ function* fetchUser(action) {
     }
 }
 
-function* fetchBattleLog(action) {
+function* fetchBattleLog(action:ReturnType<typeof setBattle>) {
     try {
         const battleLog = yield call(getBattleLog, action.payload);
         yield put(setBattleSuccess(battleLog.data));

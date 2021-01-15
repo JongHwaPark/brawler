@@ -1,26 +1,21 @@
 import React  from 'react';
-import { Image } from 'semantic-ui-react';
 import classNames from 'classnames/bind';
 import styles from './soloShowDown.module.scss';
-import { getBrawlImageName } from '../../../../common/utills';
-import  { Portraits } from "../../../atoms/portraits";
 import { BattleListIcon } from "../../../atoms/battleListIcon";
+import {soloShowdown} from "../../../../modules/types/battleLog";
 
 const cx = classNames.bind(styles);
 
-
-function SoloShowDown(props) {
+interface soloShowDownProps {
+    battle:soloShowdown,
+    onClickIcon:(tag:string)=>void
+}
+function SoloShowDown(props:soloShowDownProps) {
     const components = props.battle.players.map((data, i) => {
-        const brawler = data.brawler;
         return (
             <BattleListIcon
                 key={i}
-                tag={data.tag}
-                active={props.active}
-                trophies={brawler.trophies}
-                power={brawler.power}
-                imageName={getBrawlImageName(brawler.name)}
-                name={data.name}
+                data={data}
                 onClickIcon={props.onClickIcon}
             />
         );

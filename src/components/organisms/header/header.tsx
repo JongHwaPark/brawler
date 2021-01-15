@@ -14,7 +14,7 @@ function Header() {
     const dispatch = useDispatch();
     const [tagData, setTag] = useState('2LYRJQYGJ');
 
-    const handleClickSearchBtn = async (data) => {
+    const handleClickSearchBtn = async () => {
         try {
             dispatch(setUser('#'+tagData));
             dispatch(setBattle('#'+tagData));
@@ -28,13 +28,13 @@ function Header() {
     return (
         <header className={cx('header-wrap')}>
             <div>
-                <a className={cx('logo')}>LOGO v2</a>
+                <a className={cx('logo')}>LOGO</a>
                 <ul className={cx('header-nav')}>
                     <li>
-                        <Input labelPosition='right' action={{ icon: 'search' }} placeholder='Search...'>
+                        <Input labelPosition='right' placeholder='Search...'>
                             <Label basic>#</Label>
                             <input value={tagData}  onChange={({ target: { value } }) => setTag(value)} />
-                            <Button type='submit' onClick={()=>handleClickSearchBtn()}>Search</Button>
+                            <Button type='submit' onClick={handleClickSearchBtn}>Search</Button>
                         </Input>
                     </li>
                 </ul>

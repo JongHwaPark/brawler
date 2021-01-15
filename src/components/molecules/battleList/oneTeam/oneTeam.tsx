@@ -1,25 +1,24 @@
 import React  from 'react';
 import classNames from 'classnames/bind';
 import styles from './oneTeam.module.scss';
-import { getBrawlImageName } from '../../../../common/utills';
 import { BattleListIcon } from "../../../atoms/battleListIcon";
+import {oneTeam, userType} from "../../../../modules/types/battleLog";
 
 const cx = classNames.bind(styles);
 
+interface oneTeamProps {
+    battle:oneTeam,
+    active:'',
+    onClickIcon: (tag:string) => void
+}
 
-function OneTeam(props) {
-    const getList = (team) => {
+function OneTeam(props:oneTeamProps) {
+    const getList = (team:userType[]) => {
         return team.map((data, i) => {
-            const brawler = data.brawler;
             return (
                 <BattleListIcon
                     key={i}
-                    tag={data.tag}
-                    trophies={brawler.trophies}
-                    power={brawler.power}
-                    imageName={getBrawlImageName(brawler.name)}
-                    name={data.name}
-                    active={props.active}
+                    data={data}
                     onClickIcon={props.onClickIcon}
                 />
             )

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {Image} from "semantic-ui-react";
 import classNames from "classnames/bind";
 import styles from "../components/organisms/battleList/battleList.module.scss";
@@ -6,23 +6,27 @@ import {SoloShowDown} from "../components/molecules/battleList/soloShowDown";
 import {DuoShowDown} from "../components/molecules/battleList/duoShowDown";
 import {OneTeam} from "../components/molecules/battleList/oneTeam";
 import {TwoTeam} from "../components/molecules/battleList/twoTeam";
-import {getBrawlImageName} from '../common/utills';
 import {useDispatch, useSelector} from "react-redux";
 import {setBattle, setUser} from "../modules/reducers/user";
-import StatusContext from "../context/status.context";
+import {RootState} from '../modules/reducers'
+import {battleType} from '../modules/types/battleLog'
+
 const cx = classNames.bind(styles);
 
-function BattlePlayerListContainer(props) {
-    const dispatch = useDispatch();
-    const user = useSelector((store) => store.user.get('user'));
-    const { setLoaded } = useContext(StatusContext);
+interface BattlePlayerListContainerProps {
+    battle:battleType
+}
 
-    const handleClickBrawlIcon = (data) => {
+function BattlePlayerListContainer(props:BattlePlayerListContainerProps) {
+    const dispatch = useDispatch();
+    const user = useSelector((store:RootState) => store.user.get('user'));
+    /*
+    * interfacce 제대로 하기
+    * */
+    const handleClickBrawlIcon = (data:string) => {
         try {
-            setLoaded(false);
             dispatch(setUser(data));
             dispatch(setBattle(data));
-            setLoaded(true);
 
         } catch (err){
             console.log(err);
@@ -35,19 +39,18 @@ function BattlePlayerListContainer(props) {
             case"soloShowdown":
                 components = <SoloShowDown
                     battle={props.battle}
-                    active={user.name}
                     onClickIcon={handleClickBrawlIcon}
                 />;
                 break;
             case"duoShowdown":
                 components = <DuoShowDown
                     battle={props.battle}
-                    active={user.name}
                     onClickIcon={handleClickBrawlIcon}
                 />;
                 break;
             case"gemGrab":
             case"brawlBall":
+            case"presentPlunder":
             case"bounty":
             case"hotZone":
             case"heist":
@@ -59,33 +62,12 @@ function BattlePlayerListContainer(props) {
                 />;
                 break;
             case"bossFight":
+            case"roboRumble":
                 components = <OneTeam
                     battle={props.battle}
                     active={user.name}
                     onClickIcon={handleClickBrawlIcon}
                 />;
-                break;
-            case"roboRumble":
-                components = props.battle.players.map((data, i) => {
-                    return (
-                        <li onClick={() => handleClickBrawlIcon(data.tag)}>
-                            <div className={cx('image-wrap')}>
-                                <div className={cx('top')}>
-                                    <div>
-                                        <Image src={require(`../static/UI/icon_trophy_medium.png`)} />
-                                    </div>
-                                    <span>{data.brawler.trophies}</span>
-                                </div>
-                                <div className={cx('bottom')}>
-                                    <span>Lv</span>
-                                    <strong>{data.brawler.power}</strong>
-                                </div>
-                                <Image src={require(`../static/Brawler/Portraits/${getBrawlImageName(data.brawler.name)}.png`)} />
-                            </div>
-                            <div className={cx('name')}>{data.name}</div>
-                        </li>
-                    );
-                });
                 break;
             default:
                 components =
