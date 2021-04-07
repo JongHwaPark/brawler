@@ -1,4 +1,5 @@
 {
+  "homepage":"https://jonghwapark.github.io/brawler/",
   "name": "client",
   "version": "0.1.0",
   "private": true,
@@ -13,6 +14,8 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.6",
+    "gh-pages": "^3.1.0",
+    "http-proxy-middleware": "^1.1.0",
     "immutable": "^4.0.0-rc.12",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
@@ -30,7 +33,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -56,5 +61,6 @@
   "resolutions": {
     "**/@typescript-eslint/eslint-plugin": "^4.1.1",
     "**/@typescript-eslint/parser": "^4.1.1"
-  }
+  },
+  "proxy": "https://api.brawlstars.com"
 }

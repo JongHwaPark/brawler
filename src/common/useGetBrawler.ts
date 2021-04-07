@@ -48,7 +48,7 @@ export const useGetBrawler = (battleData:battleType, user:userType):brawlerType 
                 }
             }
             break;
-        case"bigGame":
+        case"bossFight":
         case"soloShowdown":
         case'roboRumble':
             for(const player of battleData.players){
@@ -58,9 +58,12 @@ export const useGetBrawler = (battleData:battleType, user:userType):brawlerType 
                 }
             }
             break;
-        // case'bossFight':
-        //     rtnVal = battleData.bigBrawler?.brawler[0];
-        //     break;
+/*
+        case'bigGame':
+            console.log('베틀데이타 ',battleData);
+            rtnVal = battleData.bigBrawler?.brawler[0];
+            break;
+*/
         default:
             console.log('디폴트다',battleData);
     }
