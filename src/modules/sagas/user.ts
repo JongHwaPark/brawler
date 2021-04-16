@@ -4,11 +4,11 @@ import { SET_USER, SET_BATTLE, setUserSuccess, setBattleSuccess } from '../reduc
 import {setUser, setBattle} from '../reducers/user'
 
 const getBattleLog = (tagData:string) => {
-    return axios.get(`http://127.0.0.1:8000/battle/${encodeURIComponent(tagData)}`);
+    return axios.get(`/battle/${encodeURIComponent(tagData)}`);
 };
 
 const getUser = (tagData:string) => {
-    return axios.get(`http://127.0.0.1:8000/player/${encodeURIComponent(tagData)}`);
+    return axios.get(`/player/${encodeURIComponent(tagData)}`);
 };
 
 function* fetchUser(action:ReturnType<typeof setUser>) {
