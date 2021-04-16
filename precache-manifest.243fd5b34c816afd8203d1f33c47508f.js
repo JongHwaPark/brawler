@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a7726a6d7dffd2ed91c3909efbc3a1e9",
+    "revision": "c7a8810e8023e1fb455257683a733108",
     "url": "/brawler/index.html"
   },
   {
-    "revision": "55d477abc2141958431a",
+    "revision": "3f643f63a6a344dc3db8",
     "url": "/brawler/static/css/2.218e2220.chunk.css"
   },
   {
-    "revision": "13236b385043c4635264",
+    "revision": "aeb8ce114074786a178b",
     "url": "/brawler/static/css/main.a3242f80.chunk.css"
   },
   {
-    "revision": "55d477abc2141958431a",
-    "url": "/brawler/static/js/2.99963392.chunk.js"
+    "revision": "3f643f63a6a344dc3db8",
+    "url": "/brawler/static/js/2.680987b4.chunk.js"
   },
   {
     "revision": "4d47ffde3dc69784e8e23fd910817ef8",
-    "url": "/brawler/static/js/2.99963392.chunk.js.LICENSE.txt"
+    "url": "/brawler/static/js/2.680987b4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "13236b385043c4635264",
-    "url": "/brawler/static/js/main.fa5bac99.chunk.js"
+    "revision": "aeb8ce114074786a178b",
+    "url": "/brawler/static/js/main.93fa5e76.chunk.js"
   },
   {
     "revision": "8d2b06a7c8b4040844bb",
