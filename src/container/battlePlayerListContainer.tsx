@@ -55,6 +55,7 @@ function BattlePlayerListContainer(props:BattlePlayerListContainerProps) {
             case"hotZone":
             case"heist":
             case"siege":
+            case"knockout":
                 components = <TwoTeam
                     battle={props.battle}
                     active={user.name}

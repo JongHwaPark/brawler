@@ -17,7 +17,7 @@ function Header() {
     const handleClickSearchBtn = async () => {
         try {
             dispatch(setUser('#'+tagData));
-            // dispatch(setBattle('#'+tagData));
+            dispatch(setBattle('#'+tagData));
 
         } catch (err){
             console.log(err);

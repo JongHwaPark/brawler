@@ -39,6 +39,7 @@ export const useGetBrawler = (battleData:battleType, user:userType):brawlerType 
         case'bounty':
         case'hotZone':
         case'presentPlunder':
+        case'knockout':
             for(const teamData of battleData.teams){
                 for(const player of teamData){
                     if(player.tag === user.tag){

@@ -39,7 +39,7 @@ export interface oneTeam {
 }
 
 export interface twoTeam {
-    mode:'gemGrab' | 'brawlBall' | 'presentPlunder' | 'bounty' | 'hotZone' | 'heist' | 'siege',
+    mode:'gemGrab' | 'brawlBall' | 'presentPlunder' | 'bounty' | 'hotZone' | 'heist' | 'siege' | 'knockout',
     type: string
     result:string
     duration:number

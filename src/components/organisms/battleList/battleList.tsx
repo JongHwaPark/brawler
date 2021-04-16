@@ -32,7 +32,7 @@ function BattleList(props:battleListProps) {
                 <li className={cx('game-mode')}>
                     <div className={cx('sec1')}>
                         <div className={cx('image-wrap')}>
-                            <Image src={require(`../../../static/GameModes/mode-icons/${battleData.mode}.png`)} />
+                            <Image src={require(`../../../static/GameModes/mode-icons/${battleData.mode}.png`)}/>
                         </div>
                         <div>
                             <div className={cx('mode')}>{battleData.mode}</div>
