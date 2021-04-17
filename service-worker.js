@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/brawler/precache-manifest.243fd5b34c816afd8203d1f33c47508f.js"
+  "/brawler/precache-manifest.c689b3c9c73b8bc41e2aa47ab3e42e49.js"
 );
 
 self.addEventListener('message', (event) => {
