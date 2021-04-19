@@ -4,11 +4,11 @@ import { SET_USER, SET_BATTLE, setUserSuccess, setBattleSuccess } from '../reduc
 import {setUser, setBattle} from '../reducers/user'
 
 const getBattleLog = (tagData:string) => {
-    return axios.get(`/battle/${encodeURIComponent(tagData)}`);
+    return axios.get(`/brawl/battle/${encodeURIComponent(tagData)}`);
 };
 
 const getUser = (tagData:string) => {
-    return axios.get(`/player/${encodeURIComponent(tagData)}`);
+    return axios.get(`/brawl/player/${encodeURIComponent(tagData)}`);
 };
 
 function* fetchUser(action:ReturnType<typeof setUser>) {
