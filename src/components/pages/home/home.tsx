@@ -26,7 +26,7 @@ function Home() {
     return (
         <div className={cx('home-wrap')}>
             <div className={cx('profile-wrap', 'center-wrap')}>
-                <div className={cx('profile-icon')}>IMG</div>
+                <div className={cx('profile-icon')}>IMG / {process.env.REACT_APP_TEST}</div>
                 <div>
                     <div>{user.name}</div>
                     <div>{user.tag}</div>
