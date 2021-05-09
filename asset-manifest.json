@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/brawler/static/css/main.d32f5227.chunk.css",
-    "main.js": "/brawler/static/js/main.c0bff8ac.chunk.js",
-    "main.js.map": "/brawler/static/js/main.c0bff8ac.chunk.js.map",
+    "main.js": "/brawler/static/js/main.75d31cc6.chunk.js",
+    "main.js.map": "/brawler/static/js/main.75d31cc6.chunk.js.map",
     "runtime-main.js": "/brawler/static/js/runtime-main.dec87d04.js",
     "runtime-main.js.map": "/brawler/static/js/runtime-main.dec87d04.js.map",
     "static/css/2.218e2220.chunk.css": "/brawler/static/css/2.218e2220.chunk.css",
     "static/js/2.680987b4.chunk.js": "/brawler/static/js/2.680987b4.chunk.js",
     "static/js/2.680987b4.chunk.js.map": "/brawler/static/js/2.680987b4.chunk.js.map",
     "index.html": "/brawler/index.html",
-    "precache-manifest.c09a10bb8a338a5032de4ab1d2341236.js": "/brawler/precache-manifest.c09a10bb8a338a5032de4ab1d2341236.js",
+    "precache-manifest.e32fd52249732d42e679ad942bc50849.js": "/brawler/precache-manifest.e32fd52249732d42e679ad942bc50849.js",
     "service-worker.js": "/brawler/service-worker.js",
     "static/css/2.218e2220.chunk.css.map": "/brawler/static/css/2.218e2220.chunk.css.map",
     "static/css/main.d32f5227.chunk.css.map": "/brawler/static/css/main.d32f5227.chunk.css.map",
@@ -37,6 +37,6 @@
     "static/css/2.218e2220.chunk.css",
     "static/js/2.680987b4.chunk.js",
     "static/css/main.d32f5227.chunk.css",
-    "static/js/main.c0bff8ac.chunk.js"
+    "static/js/main.75d31cc6.chunk.js"
   ]
 }
