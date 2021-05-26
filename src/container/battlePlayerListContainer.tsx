@@ -36,6 +36,7 @@ function BattlePlayerListContainer(props:BattlePlayerListContainerProps) {
     const getComponents = () => {
         let components;
         switch(props.battle.mode){
+            case"takedown":
             case"soloShowdown":
                 components = <SoloShowDown
                     battle={props.battle}

@@ -11,6 +11,14 @@ export interface userType {
     "brawler": brawlerType
 }
 
+export interface takedown {
+    mode: "takedown",
+    type: string,
+    rank: number,
+    players: userType[],
+    trophyChange?:number
+}
+
 export interface soloShowdown {
     mode: "soloShowdown",
     type: string,
@@ -48,7 +56,7 @@ export interface twoTeam {
     teams: [userType[], userType[]]
 }
 
-export type battleType = soloShowdown | duoShowdown | oneTeam | twoTeam;
+export type battleType = takedown | soloShowdown | duoShowdown | oneTeam | twoTeam;
 
 export interface eventType {
     id:number,

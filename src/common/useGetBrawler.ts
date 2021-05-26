@@ -49,6 +49,7 @@ export const useGetBrawler = (battleData:battleType, user:userType):brawlerType 
                 }
             }
             break;
+        case"takedown":
         case"bossFight":
         case"soloShowdown":
         case'roboRumble':

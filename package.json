@@ -1,5 +1,5 @@
 {
-  "homepage":"https://jonghwapark.github.io/brawler/",
+  "homepage": "https://jonghwapark.github.io/brawler/",
   "name": "client",
   "version": "0.1.0",
   "private": true,
@@ -20,6 +20,7 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-native-web": "^0.16.3",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-router-redux": "^4.0.8",
@@ -34,8 +35,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -2,12 +2,12 @@ import React  from 'react';
 import classNames from 'classnames/bind';
 import styles from './soloShowDown.module.scss';
 import { BattleListIcon } from "../../../atoms/battleListIcon";
-import {soloShowdown} from "../../../../modules/types/battleLog";
+import {soloShowdown, takedown} from "../../../../modules/types/battleLog";
 
 const cx = classNames.bind(styles);
 
 interface soloShowDownProps {
-    battle:soloShowdown,
+    battle:soloShowdown | takedown,
     onClickIcon:(tag:string)=>void
 }
 function SoloShowDown(props:soloShowDownProps) {

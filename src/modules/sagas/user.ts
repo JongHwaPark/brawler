@@ -4,7 +4,7 @@ import { SET_USER, SET_BATTLE, setUserSuccess, setBattleSuccess } from '../reduc
 import {setUser, setBattle} from '../reducers/user'
 
 const getBattleLog = (tagData:string) => {
-    return axios.get(`/brawl/battle/${encodeURIComponent(tagData)}`);
+    return axios.get(`http://18.190.159.187:8000/brawl/battle/${encodeURIComponent(tagData)}`);
 };
 
 const getUser = (tagData:string) => {
